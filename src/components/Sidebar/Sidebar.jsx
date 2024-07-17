@@ -6,6 +6,7 @@ import DarkMode from "./DarkMode";
 
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
+  const [settingsExtended, setSettingsExtended] = useState(false);
 
   const { onSent, prevPrompts, setRecentPrompt, newChat } = useContext(Context);
 
@@ -30,14 +31,12 @@ const Sidebar = () => {
         {extended ? (
           <div className="recent">
             <p className="recent-title">Recent</p>
-            {prevPrompts.map((item, index) => {
-              return (
-                <div onClick={() => loadPrompt(item)} className="recent-entry">
-                  <img src={assets.message_icon} alt="" />
-                  <p>{item.slice(0, 18)} ...</p>
-                </div>
-              );
-            })}
+            {prevPrompts.map((item, index) => (
+              <div key={index} onClick={() => loadPrompt(item)} className="recent-entry">
+                <img src={assets.message_icon} alt="" />
+                <p>{item.slice(0, 10)} ...</p>
+              </div>
+            ))}
           </div>
         ) : null}
       </div>
@@ -50,18 +49,20 @@ const Sidebar = () => {
           <img src={assets.history_icon} alt="" />
           {extended ? <p>Activity</p> : null}
         </div>
-        <div className="bottom-item recent-entry">
+        <div className="bottom-item recent-entry" onClick={() => setSettingsExtended((prev) => !prev)}>
           <img src={assets.setting_icon} alt="" />
           {extended ? <p>Settings</p> : null}
         </div>
-        <div className="bottom-item recent-entry">
-          <img
-            src="src/assets/darkmode_icon.png"
-            alt=""
-            className="mydarkmodeIcon"
-          />
-          {extended ? <DarkMode /> : null}
-        </div>
+        {settingsExtended && extended ? (
+          <div className="bottom-item recent-entry">
+            <img
+              src={assets.darkmode_icon}
+              alt=""
+              className="darkmode-icon"
+            />
+            <DarkMode />
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -1,70 +1,86 @@
-.main{
+.main {
     flex: 1;
     min-height: 100vh;
     padding-bottom: 15vh;
-    position: relative;   
+    position: relative;
 }
-.main .nav{
+
+.main .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     font-size: 22px;
-    color: #585858;
+    color: var(--font-color);
 }
-.main .nav img{
+
+.main .nav img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
 }
-.main-container{
+
+.main-container {
     max-width: 900px;
     margin: auto;
 }
-.main .greet{
-    margin: 50px 0;
+
+.main .greet {
+    margin: 10px 0;
     font-size: 56px;
-    color: #C4C7C5;
+    color: var(--card-text-color);
     font-weight: 500;
     padding: 20px;
 }
-.main .greet span{
+
+.main .greet span {
     background: -webkit-linear-gradient(16deg, #4B90FF, #FF5546);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-.main .cards{
+
+.main .special-text {
+    color: var(--special-text-color); /* Color gris para el texto específico */
+}
+
+.main .cards {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
     padding: 20px;
 }
-.card{
+
+.card {
     height: 200px;
     padding: 15px;
-    background-color: #F0F4F9;
+    background-color: var(--card-background-color);
     border-radius: 10px;
     position: relative;
     cursor: pointer;
 }
-.card p{
-    color: #585858;
+
+.card p {
+    color: var(--card-text-color);
     font-size: 17px;
 }
-.card img{
+
+.card img {
     width: 35px;
     padding: 5px;
     position: absolute;
-    background-color: white;
+    background-color: #f5f5f5; /* Fondo negro para los iconos de las tarjetas */
+    color: #fff; /* Color blanco para los iconos */
     border-radius: 20px;
     bottom: 10px;
     right: 10px;
 }
-.card:hover{
-    background-color: #DFE4EA;
+
+.card:hover {
+    background-color: var(--card-hover-color);
 }
-.main-bottom{
+
+.main-bottom {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -72,73 +88,85 @@
     padding: 0 20px;
     margin: auto;
 }
-.search-box{
+
+.search-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #F0F4F9;
+    background-color: var(--input-background-color);
     padding: 10px 20px;
     border-radius: 50px;
 }
+
 .search-box img {
     width: 25px;
     cursor: pointer;
+    filter: brightness(0) invert(1); /* Color blanco para los iconos */
 }
-.search-box input{
+
+.search-box input {
     flex: 1;
-    background: transparent;
+    background: var(--input-background-color);
     border: none;
     outline: none;
     padding: 8px;
     font-size: 18px;
+    color: var(--input-text-color);
 }
-.search-box .search-box-icon{
+
+.search-box .search-box-icon {
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.bottom-info{
+
+.bottom-info {
     font-size: 13px;
     margin: 15px auto;
     text-align: center;
     font-weight: 300;
+    color: var(--font-color);
 }
 
-.result{
+.result {
     padding: 0 5%;
     max-height: 70vh;
     overflow-y: scroll;
 }
-.result::-webkit-scrollbar{
+
+.result::-webkit-scrollbar {
     display: none;
 }
-.result-title{
+
+.result-title {
     margin: 40px 0;
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.result img{
+.result img {
     height: 40px;
     object-fit: cover;
     width: 40px;
     border-radius: 50%;
 }
 
-.result-date{
+.result-date {
     display: flex;
     align-items: start;
     gap: 20px;
 }
-.loader{
+
+.loader {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.loader hr{
+
+.loader hr {
     border-radius: 4px;
     border: none;
     background-color: #F6F7F8;
@@ -147,34 +175,38 @@
     height: 20px;
     animation: loader 3s infinite linear;
 }
+
 @keyframes loader {
-    0%{
+    0% {
         background-position: -800px 0px;
     }
-    100%{
+    100% {
         background-position: 800px 0px;
     }
 }
-.result-data p{
+
+.result-data p {
     font-size: 17px;
     font-weight: 300;
     line-height: 1.8;
+    color: var(--font-color);
 }
-@media (max-wdith: 600px) {
-    .main-bottom input{
-        flex: none ;
+
+@media (max-width: 600px) {
+    .main-bottom input {
+        flex: none;
         width: 150px;
     }
-    .main-bottom img{
+    .main-bottom img {
         width: 20px;
     }
-    .search-box img{
+    .search-box img {
         display: inline-table;
     }
-    .search-box{
+    .search-box {
         padding: 5px 10px;
     }
-    .search-box div{
+    .search-box div {
         gap: 5px;
     }
 }
