@@ -157,7 +157,7 @@
     border-radius: 50%;
 }
 
-.result-date {
+.result-data {
     display: flex;
     align-items: start;
     gap: 20px;
