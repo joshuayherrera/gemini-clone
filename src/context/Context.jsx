@@ -4,12 +4,19 @@ import runChat from "../config/gemini";
 export const Context = createContext();
 
 const ContextProvider = (props) => {
+  const [cards, setCards] = useState([]);
   const [input, setInput] = useState("");
   const [recentPrompt, setRecentPrompt] = useState("");
   const [prevPrompts, setPrevPrompts] = useState([]);
   const [showResult, setShowResult] = useState(false);
   const [loading, setLoading] = useState(false);
   const [resultData, setResultData] = useState("");
+
+  const putCards = (cardData) => {
+    // Update cards state with the provided data
+    // (Consider validation or data transformation if needed)
+    setCards(cardData);
+  };
 
   const delayPara = (index, nextWord) => {
     setTimeout(function () {
@@ -56,6 +63,8 @@ const ContextProvider = (props) => {
   };
 
   const contextValue = {
+    cards,
+    putCards,
     prevPrompts,
     setPrevPrompts,
     onSent,

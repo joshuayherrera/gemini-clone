@@ -4,6 +4,14 @@ import { useContext } from "react";
 import { Context } from "../../context/Context";
 
 const Main = () => {
+
+  const cardData = [
+    { text: "Suggest beautiful places to see in Canada", icon: assets.compass_icon },
+    { text: "Plan a low-carb meal with what's available in my fridge", icon: assets.bulb_icon },
+    { text: "List power words for my resume that show teamwork", icon: assets.message_icon },
+    { text: "Create a list of power phrases for my resume", icon: assets.code_icon },
+  ];
+
   // destructuring the object of context
   const {
     input,
@@ -14,6 +22,11 @@ const Main = () => {
     loading,
     resultData,
   } = useContext(Context);
+
+  const handleCardClick = (text) => {
+    setInput(text);
+  };
+
   return (
     <>
       <div className="main">
@@ -31,22 +44,12 @@ const Main = () => {
                 <p className="special-text">How can I help you today?</p>
               </div>
               <div className="cards">
-                <div className="card">
-                  <p>Suggest beautiful places to see in Canada</p>
-                  <img src={assets.compass_icon} alt="CompassIcon" />
-                </div>
-                <div className="card">
-                  <p>Plan a low-carb meal with what's available in my fridge</p>
-                  <img src={assets.bulb_icon} alt="CompassIcon" />
-                </div>
-                <div className="card">
-                  <p>List power words for my resume that show teamwork</p>
-                  <img src={assets.message_icon} alt="CompassIcon" />
-                </div>
-                <div className="card">
-                  <p>Create a list of power phrases for my resume</p>
-                  <img src={assets.code_icon} alt="CompassIcon" />
-                </div>
+                {cardData.map((card) => (
+                  <div className="card" key={card.text} onClick={() => handleCardClick(card.text)}>
+                    <p>{card.text}</p>
+                    <img src={card.icon} alt="CardIcon" />
+                  </div>
+                ))}
               </div>
             </>
           ) : (
